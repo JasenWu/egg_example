@@ -30,4 +30,5 @@ $ npm stop
 - Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
 
 
-[egg]: https://eggjs.org
+简书登录注册功能：
+https://www.jianshu.com/p/32e311803a01

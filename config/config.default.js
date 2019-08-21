@@ -1,5 +1,5 @@
 /* eslint valid-jsdoc: "off" */
-
+let path = require('path');
 'use strict';
 
 /**
@@ -24,12 +24,18 @@ module.exports = appInfo => {
       // 密码
       password: '',
       // 数据库名
-      database: 'blogdemo2db',
+      database: 'egg-example',
     },
     // 是否加载到 app 上，默认开启
     app: true,
     // 是否加载到 agent 上，默认关闭
     agent: false,
+  };
+  config.view = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.tpl': 'nunjucks',
+    },
   };
 
   // use for cookie sign key, should change to your own and keep security
@@ -37,9 +43,27 @@ module.exports = appInfo => {
 
   // add your middleware config here
   config.middleware = [];
+  config.security = {
+      csrf: {
+      enable: false,
+      },
+      domainWhiteList:['.127.0.0.1'],  // 安全白名单，以 . 开头
+  };
+ 
+  config.rememberMe  =  24 * 60 * 60 * 1000, //选择记住我之后，session有效时长
+ 
+  config.multipart = {
+      mode: 'file',
+      tmpdir: path.join(appInfo.baseDir, 'app/public/temp'),
+  }
 
-  
-
+  config.session = {
+      key: 'EGG_SESS',
+      maxAge: 10 * 1000, // 单位毫秒
+      httpOnly: true,
+      encrypt: true,
+  }
+ 
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',

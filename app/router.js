@@ -6,13 +6,36 @@
 module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.home.index);
-  router.get('/user', controller.home.user);
-  router.get('/add', controller.home.add);
-  router.get('/remove', controller.home.remove);
-  router.get('/session', controller.home.session);
+  
+  router.get('/news', controller.news.list);
 
-  router.resources('posts','/posts', controller.posts);
+  //登录页面
+  router.get('/login.htm', controller.home.login);
 
+  //注册页面
+  router.get('/register.htm', controller.home.register);
+
+  //首页
+  router.get('/index.htm', controller.home.index);
+  
+  //贴子页面
+  router.get('/post.htm', controller.home.post);
+
+
+
+
+  //登录
+  router.post('/user/login',controller.user.login);
+  //退出登录
+  router.post('/user/logout',controller.user.logout);
+  //获取当前用户
+  router.get('/user/curuser',controller.user.curuser);
+  //注册
+  router.post('/user/register',controller.user.register);
+  //获取session
+  router.get('/user/get-session',controller.user.getsession);
+  //用户列表
+  router.get('/user/list',controller.user.list);
 
 
 };
