@@ -1,12 +1,16 @@
-'use strict';
+ 
+exports.index = async (ctx) => {
+    ctx.body = '123';
+};
 
-const Controller = require('egg').Controller;
+exports.new = async () => {};
 
-class HomeController extends Controller {
-    async index(){
-        let ctx = this.ctx;
-        ctx.body = {
-            name:'Jason'
-        }
-    }
-} 
+exports.create = async () => {};
+
+exports.show = async () => {};
+
+exports.edit = async () => {};
+
+exports.update = async () => {};
+
+exports.destroy = async () => {};

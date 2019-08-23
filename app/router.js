@@ -36,6 +36,7 @@ module.exports = app => {
   router.get('/user/get-session',controller.user.getsession);
   //用户列表
   router.get('/user/list',controller.user.list);
-
-
+  //贴子管理
+  //router.resources('/api/posts', controller.posts);
+  router.resources('/api/posts', controller.posts);
 };

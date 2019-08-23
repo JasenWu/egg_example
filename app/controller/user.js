@@ -24,8 +24,9 @@ class UserController extends Controller{
         const user = await ctx.service.user.loginAndGetUser(username, password);
         if (!user){
             ctx.body = {
-                successFlag:'N',
-                errorMsg:'用户名或密码错误！'
+                retCode:401,
+                retMsg:'用户名或密码错误！'
+             
             }
         }else {
             // 设置 Session
@@ -35,8 +36,12 @@ class UserController extends Controller{
             if (rememberMe) ctx.session.maxAge = this.config.rememberMe;
 
             ctx.body = {
-                successFlag:'Y',
-                errorMsg:'登录成功！'
+                retCode:0,
+                retMsg:'登录成功！',
+                retData:{
+                  ...user
+                }
+                
             };
            
         }
@@ -48,8 +53,12 @@ class UserController extends Controller{
         ctx.session.user = {};
 
         ctx.body = {
-            successFlag:'Y',
-            errorMsg:'注消成功！'
+            retCode:0,
+            retMsg:'注消成功！',
+            retData:{
+              
+            }
+            
         };
 
         

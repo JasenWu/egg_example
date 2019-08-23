@@ -44,10 +44,15 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
   config.security = {
-      csrf: {
+    csrf: {
       enable: false,
-      },
-      domainWhiteList:['.127.0.0.1'],  // 安全白名单，以 . 开头
+      ignoreJSON: true
+    },
+    domainWhiteList: ['*']
+  };
+  config.cors = {
+    origin:'*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
   };
  
   config.rememberMe  =  24 * 60 * 60 * 1000, //选择记住我之后，session有效时长
