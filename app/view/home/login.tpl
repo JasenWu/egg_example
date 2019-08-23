@@ -53,7 +53,7 @@
         let { successFlag, errorMsg } = res.data;
         if (successFlag) {
           alert(errorMsg)
-          location.href = './index.htm'
+          location.href = './post.htm'
         } else {
           alert(errorMsg)
         }

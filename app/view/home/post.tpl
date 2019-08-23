@@ -37,11 +37,7 @@
 </head>
 
 <body>
-    <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="./index.htm">Users</a></li>
-        <li role="presentation"><a href="./post.htm">Posts</a></li>
-         
-    </ul>
+     {% include "./components/nav.tpl" %} 
     <ul class="news-view view">
         <section>
             <h4 class="title">用户列表</h4>
