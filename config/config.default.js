@@ -45,14 +45,17 @@ module.exports = appInfo => {
   config.middleware = [];
   config.security = {
     csrf: {
-      enable: false,
-      ignoreJSON: true
+      enable: true,
+      ignoreJSON: false,
+      
     },
-    domainWhiteList: ['*']
+    
+    domainWhiteList: ['http://localhost:8080']
   };
   config.cors = {
     origin:'*',
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+  
   };
  
   config.rememberMe  =  24 * 60 * 60 * 1000, //选择记住我之后，session有效时长

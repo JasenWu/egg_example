@@ -10,14 +10,7 @@ exports.index = async (ctx) => {
    
 };
 
-// exports.new = async (ctx) => {
-//     const data =  await ctx.service.posts.add({
-//         title:'title',
-//         details:'details',
-//     });
-//     ctx.body = data;
  
-// };
 
 exports.create = async (ctx) => {
     const data =  await ctx.service.posts.create({

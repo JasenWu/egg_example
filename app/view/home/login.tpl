@@ -50,12 +50,12 @@
         remember
       }).then((res) => {
         console.log('res', res);
-        let { successFlag, errorMsg } = res.data;
-        if (successFlag) {
-          alert(errorMsg)
+        let { retCode, retMsg } = res.data;
+        if (retCode === 0) {
+          alert(retMsg)
           location.href = './post.htm'
         } else {
-          alert(errorMsg)
+          alert(retMsg)
         }
       })
 

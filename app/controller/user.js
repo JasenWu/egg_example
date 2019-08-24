@@ -19,7 +19,7 @@ class UserController extends Controller{
 
     async login(){
         const ctx = this.ctx;
-        ctx.logger.info('req body:: %j',ctx.request.body);
+      
         const { username, password, rememberMe } = ctx.request.body;
         const user = await ctx.service.user.loginAndGetUser(username, password);
         if (!user){
@@ -29,11 +29,11 @@ class UserController extends Controller{
              
             }
         }else {
-            // 设置 Session
-            ctx.session.user = {...user};
- 
+            
             // 如果用户勾选了 `记住我`，设置 的过期时间
             if (rememberMe) ctx.session.maxAge = this.config.rememberMe;
+            // 设置 Session
+            ctx.session.user = {...user};
 
             ctx.body = {
                 retCode:0,
@@ -113,13 +113,20 @@ class UserController extends Controller{
     }
 
     async list(){
-        if(this.ctx.session.user.id){
-            let {ctx} = this;
-            const users = await ctx.service.user.list();
-            ctx.body =  [users];
-        }else{
-            ctx.body =  [];
+        this.ctx.body = {
+            ...this.ctx.session.user
         }
+        
+        const ctx = this.ctx;
+        ctx.body =  ctx.session.user;
+       
+        // if(this.ctx.session.user.id){
+        //     // let {ctx} = this;
+        //     // const users = await ctx.service.user.list();
+        //     ctx.body =  [];
+        // }else{
+        //     ctx.body =  [];
+        // }
        
          
     }
