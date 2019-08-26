@@ -1,4 +1,7 @@
  
+var fs = require('fs');
+var path = require('path');
+
 exports.index = async (ctx) => {
    const data =  await ctx.service.posts.index();
 
@@ -49,3 +52,27 @@ exports.destroy = async (ctx) => {
     
      
 };
+
+
+exports.upload = async (ctx) =>{
+    let file = ctx.request.files[0];
+
+    var sourceFile = path.resolve(file.filepath);
+
+   
+ 
+    var destPath = path.join(ctx.app.baseDir,`uploads/${file.filename}`);
+
+
+    fs.rename(sourceFile, destPath, function (err) {
+        fs.stat(destPath, function (err, stats) {
+          if (err) throw err;
+          console.log('stats: ' + JSON.stringify(stats));
+        });
+      });
+
+      ctx.body = {
+        file
+    }
+      
+}
