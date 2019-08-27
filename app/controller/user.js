@@ -34,14 +34,21 @@ class UserController extends Controller{
             if (rememberMe) {
                 ctx.session.maxAge = this.config.rememberMe
             };
-            // 设置 Session
-            ctx.session.user = {...user};
+             
 
+            // 设置 Session
+            ctx.session.user = {
+               
+                    ...user
+                
+            };
+             
             ctx.body = {
                 retCode:0,
                 retMsg:'登录成功！',
                 retData:{
                   ...ctx.session.user
+                 
                 }
                 
             };
