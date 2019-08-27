@@ -29,7 +29,7 @@ module.exports = app => {
   //退出登录
   router.post('/user/logout',controller.user.logout);
   //获取当前用户
-  router.get('/user/curuser',controller.user.curuser);
+  router.get('/user/getuser',controller.user.getuser);
   //注册
   router.post('/user/register',controller.user.register);
   //获取session

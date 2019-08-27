@@ -54,7 +54,7 @@ module.exports = appInfo => {
   };
 
   config.cors = {
-    origin:'http://localhost:8081',
+    origin:'http://localhost:8082',
     credentials: true,
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
   };

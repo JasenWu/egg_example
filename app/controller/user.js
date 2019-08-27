@@ -9,10 +9,16 @@ class UserController extends Controller{
         }
     }
 
-    async curuser(){
+    async getuser(){
+        let {ctx} = this;
 
-        this.ctx.body = {
-            ...this.ctx.session.user
+         ctx.body = {
+             retCode:0,
+             retData:{
+                ...ctx.session.user
+             },
+             retMsg:'已存在该用户'
+            
         }
     }
 
@@ -122,19 +128,20 @@ class UserController extends Controller{
     }
 
     async list(){
-        this.ctx.body = {
-            ...this.ctx.session.user
-        }
         
       
        
-        // if(this.ctx.session.user.id){
-        //     // let {ctx} = this;
-        //     // const users = await ctx.service.user.list();
-        //     ctx.body =  [];
-        // }else{
-        //     ctx.body =  [];
-        // }
+        if(this.ctx.session.user.id){
+            let {ctx} = this;
+            const users = await ctx.service.user.list();
+            ctx.body =  {
+                retCode:0,
+                retData:users,
+                retMsg:'成功'
+            };
+        }else{
+            ctx.body =  [];
+        }
        
          
     }
