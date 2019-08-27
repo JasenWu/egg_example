@@ -43,7 +43,7 @@ class PostsService extends Service {
     }
 
     async update(data) {
-        const d =await this.app.mysql.update('posts',data);
+        const d = await this.app.mysql.update('posts',data);
 
         if(d.affectedRows == 1)
         return {

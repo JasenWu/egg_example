@@ -42,12 +42,12 @@
     $("#submit").click(function () {
       let username = $('#inputUserName').val();
       let password = $('#inputPassword').val();
-      let remember = $('#remember').val();
+      let rememberMe = $('#remember').val();
 
       axios.post('/user/login', {
         username,
         password,
-        remember
+        rememberMe
       }).then((res) => {
         console.log('res', res);
         let { retCode, retMsg } = res.data;

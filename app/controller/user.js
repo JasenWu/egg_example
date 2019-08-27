@@ -31,7 +31,9 @@ class UserController extends Controller{
         }else {
             
             // 如果用户勾选了 `记住我`，设置 的过期时间
-            if (rememberMe) ctx.session.maxAge = this.config.rememberMe;
+            if (rememberMe) {
+                ctx.session.maxAge = this.config.rememberMe
+            };
             // 设置 Session
             ctx.session.user = {...user};
 
@@ -39,7 +41,7 @@ class UserController extends Controller{
                 retCode:0,
                 retMsg:'登录成功！',
                 retData:{
-                  ...user
+                  ...ctx.session.user
                 }
                 
             };
@@ -117,8 +119,7 @@ class UserController extends Controller{
             ...this.ctx.session.user
         }
         
-        const ctx = this.ctx;
-        ctx.body =  ctx.session.user;
+      
        
         // if(this.ctx.session.user.id){
         //     // let {ctx} = this;

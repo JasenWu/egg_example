@@ -61,7 +61,7 @@ module.exports = appInfo => {
 
  
  
-  config.rememberMe  =  24 * 60 * 60 * 1000, //选择记住我之后，session有效时长
+  config.rememberMe  =  (24 * 60 * 60 * 1000); //选择记住我之后，session有效时长
  
   config.multipart = {
       mode: 'file',

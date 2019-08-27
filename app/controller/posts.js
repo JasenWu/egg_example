@@ -56,11 +56,10 @@ exports.destroy = async (ctx) => {
 
 exports.upload = async (ctx) =>{
     let file = ctx.request.files[0];
-
     var sourceFile = path.resolve(file.filepath);
-    let basePath = `public/uploads/${file.filename}`;
+    
+    let basePath = `public/uploads/${new Date().getTime()}_${file.filename}`;
     let filePath = `app/${basePath}`;
- 
     var destPath = path.join(ctx.app.baseDir,filePath);
 
     const moveFile = async ()=>{
@@ -73,23 +72,27 @@ exports.upload = async (ctx) =>{
             });
         })
     }
+
    let r = await moveFile();
     if(r === 1){
         ctx.body = {
             retCode:0,
             retMsg:'上传成功!',
             retData:{
-                basePath
+                basePath,
+                file
             }
           }
+    }else{
+        ctx.body = {
+            retCode:0,
+            retMsg:'上传失败!',
+            retData:{
+                basePath,
+                file
+            }
+          }
+
     }
-  
 
-
-   
-
-     
-
-     
-      
 }
