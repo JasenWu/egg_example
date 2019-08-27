@@ -58,21 +58,38 @@ exports.upload = async (ctx) =>{
     let file = ctx.request.files[0];
 
     var sourceFile = path.resolve(file.filepath);
+    let basePath = `public/uploads/${file.filename}`;
+    let filePath = `app/${basePath}`;
+ 
+    var destPath = path.join(ctx.app.baseDir,filePath);
+
+    const moveFile = async ()=>{
+        return new Promise((resolve,reject)=>{
+            fs.rename(sourceFile, destPath, function (err) {
+                fs.stat(destPath, function (err, stats) {
+                  if (err) throw err;
+                  resolve(1);
+                });
+            });
+        })
+    }
+   let r = await moveFile();
+    if(r === 1){
+        ctx.body = {
+            retCode:0,
+            retMsg:'上传成功!',
+            retData:{
+                basePath
+            }
+          }
+    }
+  
+
 
    
- 
-    var destPath = path.join(ctx.app.baseDir,`uploads/${file.filename}`);
 
+     
 
-    fs.rename(sourceFile, destPath, function (err) {
-        fs.stat(destPath, function (err, stats) {
-          if (err) throw err;
-          console.log('stats: ' + JSON.stringify(stats));
-        });
-      });
-
-      ctx.body = {
-        file
-    }
+     
       
 }
