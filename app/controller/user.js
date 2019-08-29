@@ -145,6 +145,16 @@ class UserController extends Controller{
        
          
     }
+
+    async test(){
+        let {ctx} = this;
+        // let result = await ctx.curl('http://127.0.0.1:7001/user/getuser',{
+        //     streaming: true,
+        //   });
+
+        // ctx.set(result.header);
+        ctx.body = 'result.res';
+    }
 }
 
 module.exports = UserController;

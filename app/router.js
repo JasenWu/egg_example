@@ -37,6 +37,10 @@ module.exports = app => {
   //用户列表
   router.get('/user/list',controller.user.list);
 
+
+    //test
+    router.get('/user/test',controller.user.test);
+
    //上传文件
    router.post('/api/upload',controller.posts.upload);
   //贴子管理
