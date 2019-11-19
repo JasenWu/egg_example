@@ -59,11 +59,11 @@
 
     $(document).ready(function () {
 
-        isLogin().then((res) => {
-            if (!res) {
-                location.href = './login.htm'
-            }
-        })
+        // isLogin().then((res) => {
+        //     if (!res) {
+        //         location.href = './login.htm'
+        //     }
+        // })
 
         $('#loginOut').click(() => {
             axios.post('/user/logout').then((res) => {

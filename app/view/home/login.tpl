@@ -33,11 +33,11 @@
     
 
   $(document).ready(function () {
-    isLogin().then((res)=>{
-       if(res){
-          location.href = './index.htm'
-       }
-    })
+    // isLogin().then((res)=>{
+    //    if(res){
+    //       location.href = './index.htm'
+    //    }
+    // })
 
     $("#submit").click(function () {
       let username = $('#inputUserName').val();
